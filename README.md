@@ -34,7 +34,7 @@
 </div>
    
 <div dir="rtl">
-در نهایت هر یک از کوئری ها را با دستور EXPLANE با پارامتر های زیر اجرا می کنیم:
+هر یک از کوئری ها را با دستور EXPLANE با پارامتر های زیر اجرا می کنیم:
 </div>
    
 
@@ -44,7 +44,7 @@
  
  
 <div dir="rtl">
-   در نهایت می توان کوئری های تبدیل شده در OLAP/postgreSQL/query را اجرا کرد   
+   در نهایت می توان کوئری های تبدیل شده در OLAP/postgreSQL/query را اجرا کرد.   
  </div>
 
 ### Spark
@@ -114,7 +114,7 @@
  df.write.mode("overwrite").format("com.databricks.spark.avro").save("hdfs://namenode:8020/region.avro")
  ```
 <div dir="rtl">
-   در نهایت می توان کوئری های تبدیل شده در OLAP/spark/query را اجرا کرد   
+   در نهایت می توان کوئری های تبدیل شده در OLAP/spark/query را اجرا کرد.    
  </div>
 
 
@@ -153,7 +153,8 @@
    با اجرای دستور flink run –c main.Master flink-1.jar کلاس Master اجرا می شود و از کاربر شماره کوئری هایی که می خواهد اجرا شود را می پرسد، شماره هر یک از کوئری را با space جدا کرده و enter را می زنیم و flink محاسبه را شروع می کند، نتیجه لاگ flink در /flink-result.txt قرار می گیرد.   
  </div>
 
-##OLTP
+## OLTP
+
 <div dir="rtl">
    در این قسمت از ابزار آماده به نام OLTPbench استفاده می کنیم، که این ابزار خود هم داده ها را در دیتابیس load کرده و هم تراکنش های مربوطه را نیز بر روی آن اعمال می کند.   
  </div>
