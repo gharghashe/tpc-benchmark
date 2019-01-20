@@ -1,0 +1,629 @@
+                                                                             QUERY PLAN                                                                              
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ [                                                                                                                                                                  +
+   {                                                                                                                                                                +
+     "Plan": {                                                                                                                                                      +
+       "Node Type": "Limit",                                                                                                                                        +
+       "Parallel Aware": false,                                                                                                                                     +
+       "Startup Cost": 6310787.42,                                                                                                                                  +
+       "Total Cost": 6310787.55,                                                                                                                                    +
+       "Plan Rows": 1,                                                                                                                                              +
+       "Plan Width": 72,                                                                                                                                            +
+       "Actual Rows": 1,                                                                                                                                            +
+       "Actual Loops": 1,                                                                                                                                           +
+       "Output": ["(\"substring\"((customer.c_phone)::text, 1, 2))", "(count(*))", "(sum(customer.c_acctbal))"],                                                    +
+       "Shared Hit Blocks": 1828,                                                                                                                                   +
+       "Shared Read Blocks": 4079085,                                                                                                                               +
+       "Shared Dirtied Blocks": 0,                                                                                                                                  +
+       "Shared Written Blocks": 0,                                                                                                                                  +
+       "Local Hit Blocks": 0,                                                                                                                                       +
+       "Local Read Blocks": 0,                                                                                                                                      +
+       "Local Dirtied Blocks": 0,                                                                                                                                   +
+       "Local Written Blocks": 0,                                                                                                                                   +
+       "Temp Read Blocks": 527351,                                                                                                                                  +
+       "Temp Written Blocks": 550267,                                                                                                                               +
+       "Plans": [                                                                                                                                                   +
+         {                                                                                                                                                          +
+           "Node Type": "Aggregate",                                                                                                                                +
+           "Strategy": "Plain",                                                                                                                                     +
+           "Partial Mode": "Finalize",                                                                                                                              +
+           "Parent Relationship": "InitPlan",                                                                                                                       +
+           "Subplan Name": "InitPlan 1 (returns $1)",                                                                                                               +
+           "Parallel Aware": false,                                                                                                                                 +
+           "Startup Cost": 583749.90,                                                                                                                               +
+           "Total Cost": 583749.91,                                                                                                                                 +
+           "Plan Rows": 1,                                                                                                                                          +
+           "Plan Width": 32,                                                                                                                                        +
+           "Actual Rows": 1,                                                                                                                                        +
+           "Actual Loops": 1,                                                                                                                                       +
+           "Output": ["avg(customer_1.c_acctbal)"],                                                                                                                 +
+           "Shared Hit Blocks": 7,                                                                                                                                  +
+           "Shared Read Blocks": 418205,                                                                                                                            +
+           "Shared Dirtied Blocks": 0,                                                                                                                              +
+           "Shared Written Blocks": 0,                                                                                                                              +
+           "Local Hit Blocks": 0,                                                                                                                                   +
+           "Local Read Blocks": 0,                                                                                                                                  +
+           "Local Dirtied Blocks": 0,                                                                                                                               +
+           "Local Written Blocks": 0,                                                                                                                               +
+           "Temp Read Blocks": 0,                                                                                                                                   +
+           "Temp Written Blocks": 0,                                                                                                                                +
+           "Plans": [                                                                                                                                               +
+             {                                                                                                                                                      +
+               "Node Type": "Gather",                                                                                                                               +
+               "Parent Relationship": "Outer",                                                                                                                      +
+               "Parallel Aware": false,                                                                                                                             +
+               "Startup Cost": 583749.68,                                                                                                                           +
+               "Total Cost": 583749.89,                                                                                                                             +
+               "Plan Rows": 2,                                                                                                                                      +
+               "Plan Width": 32,                                                                                                                                    +
+               "Actual Rows": 3,                                                                                                                                    +
+               "Actual Loops": 1,                                                                                                                                   +
+               "Output": ["(PARTIAL avg(customer_1.c_acctbal))"],                                                                                                   +
+               "Workers Planned": 2,                                                                                                                                +
+               "Workers Launched": 2,                                                                                                                               +
+               "Single Copy": false,                                                                                                                                +
+               "Shared Hit Blocks": 7,                                                                                                                              +
+               "Shared Read Blocks": 418205,                                                                                                                        +
+               "Shared Dirtied Blocks": 0,                                                                                                                          +
+               "Shared Written Blocks": 0,                                                                                                                          +
+               "Local Hit Blocks": 0,                                                                                                                               +
+               "Local Read Blocks": 0,                                                                                                                              +
+               "Local Dirtied Blocks": 0,                                                                                                                           +
+               "Local Written Blocks": 0,                                                                                                                           +
+               "Temp Read Blocks": 0,                                                                                                                               +
+               "Temp Written Blocks": 0,                                                                                                                            +
+               "Plans": [                                                                                                                                           +
+                 {                                                                                                                                                  +
+                   "Node Type": "Aggregate",                                                                                                                        +
+                   "Strategy": "Plain",                                                                                                                             +
+                   "Partial Mode": "Partial",                                                                                                                       +
+                   "Parent Relationship": "Outer",                                                                                                                  +
+                   "Parallel Aware": false,                                                                                                                         +
+                   "Startup Cost": 582749.68,                                                                                                                       +
+                   "Total Cost": 582749.69,                                                                                                                         +
+                   "Plan Rows": 1,                                                                                                                                  +
+                   "Plan Width": 32,                                                                                                                                +
+                   "Actual Rows": 1,                                                                                                                                +
+                   "Actual Loops": 3,                                                                                                                               +
+                   "Output": ["PARTIAL avg(customer_1.c_acctbal)"],                                                                                                 +
+                   "Shared Hit Blocks": 7,                                                                                                                          +
+                   "Shared Read Blocks": 418205,                                                                                                                    +
+                   "Shared Dirtied Blocks": 0,                                                                                                                      +
+                   "Shared Written Blocks": 0,                                                                                                                      +
+                   "Local Hit Blocks": 0,                                                                                                                           +
+                   "Local Read Blocks": 0,                                                                                                                          +
+                   "Local Dirtied Blocks": 0,                                                                                                                       +
+                   "Local Written Blocks": 0,                                                                                                                       +
+                   "Temp Read Blocks": 0,                                                                                                                           +
+                   "Temp Written Blocks": 0,                                                                                                                        +
+                   "Workers": [                                                                                                                                     +
+                     {                                                                                                                                              +
+                       "Worker Number": 0,                                                                                                                          +
+                       "Actual Rows": 1,                                                                                                                            +
+                       "Actual Loops": 1,                                                                                                                           +
+                       "Shared Hit Blocks": 3,                                                                                                                      +
+                       "Shared Read Blocks": 140389,                                                                                                                +
+                       "Shared Dirtied Blocks": 0,                                                                                                                  +
+                       "Shared Written Blocks": 0,                                                                                                                  +
+                       "Local Hit Blocks": 0,                                                                                                                       +
+                       "Local Read Blocks": 0,                                                                                                                      +
+                       "Local Dirtied Blocks": 0,                                                                                                                   +
+                       "Local Written Blocks": 0,                                                                                                                   +
+                       "Temp Read Blocks": 0,                                                                                                                       +
+                       "Temp Written Blocks": 0                                                                                                                     +
+                     },                                                                                                                                             +
+                     {                                                                                                                                              +
+                       "Worker Number": 1,                                                                                                                          +
+                       "Actual Rows": 1,                                                                                                                            +
+                       "Actual Loops": 1,                                                                                                                           +
+                       "Shared Hit Blocks": 3,                                                                                                                      +
+                       "Shared Read Blocks": 140011,                                                                                                                +
+                       "Shared Dirtied Blocks": 0,                                                                                                                  +
+                       "Shared Written Blocks": 0,                                                                                                                  +
+                       "Local Hit Blocks": 0,                                                                                                                       +
+                       "Local Read Blocks": 0,                                                                                                                      +
+                       "Local Dirtied Blocks": 0,                                                                                                                   +
+                       "Local Written Blocks": 0,                                                                                                                   +
+                       "Temp Read Blocks": 0,                                                                                                                       +
+                       "Temp Written Blocks": 0                                                                                                                     +
+                     }                                                                                                                                              +
+                   ],                                                                                                                                               +
+                   "Plans": [                                                                                                                                       +
+                     {                                                                                                                                              +
+                       "Node Type": "Seq Scan",                                                                                                                     +
+                       "Parent Relationship": "Outer",                                                                                                              +
+                       "Parallel Aware": true,                                                                                                                      +
+                       "Relation Name": "customer",                                                                                                                 +
+                       "Schema": "store",                                                                                                                           +
+                       "Alias": "customer_1",                                                                                                                       +
+                       "Startup Cost": 0.00,                                                                                                                        +
+                       "Total Cost": 582253.14,                                                                                                                     +
+                       "Plan Rows": 198613,                                                                                                                         +
+                       "Plan Width": 6,                                                                                                                             +
+                       "Actual Rows": 727144,                                                                                                                       +
+                       "Actual Loops": 3,                                                                                                                           +
+                       "Output": ["customer_1.c_acctbal"],                                                                                                          +
+                       "Filter": "((customer_1.c_acctbal > 0.00) AND (\"substring\"((customer_1.c_phone)::text, 1, 2) = ANY ('{28,43,22,39,31,30,41}'::text[])))",  +
+                       "Rows Removed by Filter": 4272856,                                                                                                           +
+                       "Shared Hit Blocks": 7,                                                                                                                      +
+                       "Shared Read Blocks": 418205,                                                                                                                +
+                       "Shared Dirtied Blocks": 0,                                                                                                                  +
+                       "Shared Written Blocks": 0,                                                                                                                  +
+                       "Local Hit Blocks": 0,                                                                                                                       +
+                       "Local Read Blocks": 0,                                                                                                                      +
+                       "Local Dirtied Blocks": 0,                                                                                                                   +
+                       "Local Written Blocks": 0,                                                                                                                   +
+                       "Temp Read Blocks": 0,                                                                                                                       +
+                       "Temp Written Blocks": 0,                                                                                                                    +
+                       "Workers": [                                                                                                                                 +
+                         {                                                                                                                                          +
+                           "Worker Number": 0,                                                                                                                      +
+                           "Actual Rows": 732425,                                                                                                                   +
+                           "Actual Loops": 1,                                                                                                                       +
+                           "Shared Hit Blocks": 3,                                                                                                                  +
+                           "Shared Read Blocks": 140389,                                                                                                            +
+                           "Shared Dirtied Blocks": 0,                                                                                                              +
+                           "Shared Written Blocks": 0,                                                                                                              +
+                           "Local Hit Blocks": 0,                                                                                                                   +
+                           "Local Read Blocks": 0,                                                                                                                  +
+                           "Local Dirtied Blocks": 0,                                                                                                               +
+                           "Local Written Blocks": 0,                                                                                                               +
+                           "Temp Read Blocks": 0,                                                                                                                   +
+                           "Temp Written Blocks": 0                                                                                                                 +
+                         },                                                                                                                                         +
+                         {                                                                                                                                          +
+                           "Worker Number": 1,                                                                                                                      +
+                           "Actual Rows": 729808,                                                                                                                   +
+                           "Actual Loops": 1,                                                                                                                       +
+                           "Shared Hit Blocks": 3,                                                                                                                  +
+                           "Shared Read Blocks": 140011,                                                                                                            +
+                           "Shared Dirtied Blocks": 0,                                                                                                              +
+                           "Shared Written Blocks": 0,                                                                                                              +
+                           "Local Hit Blocks": 0,                                                                                                                   +
+                           "Local Read Blocks": 0,                                                                                                                  +
+                           "Local Dirtied Blocks": 0,                                                                                                               +
+                           "Local Written Blocks": 0,                                                                                                               +
+                           "Temp Read Blocks": 0,                                                                                                                   +
+                           "Temp Written Blocks": 0                                                                                                                 +
+                         }                                                                                                                                          +
+                       ]                                                                                                                                            +
+                     }                                                                                                                                              +
+                   ]                                                                                                                                                +
+                 }                                                                                                                                                  +
+               ]                                                                                                                                                    +
+             }                                                                                                                                                      +
+           ]                                                                                                                                                        +
+         },                                                                                                                                                         +
+         {                                                                                                                                                          +
+           "Node Type": "Aggregate",                                                                                                                                +
+           "Strategy": "Sorted",                                                                                                                                    +
+           "Partial Mode": "Finalize",                                                                                                                              +
+           "Parent Relationship": "Outer",                                                                                                                          +
+           "Parallel Aware": false,                                                                                                                                 +
+           "Startup Cost": 5727037.51,                                                                                                                              +
+           "Total Cost": 5739290.90,                                                                                                                                +
+           "Plan Rows": 91801,                                                                                                                                      +
+           "Plan Width": 72,                                                                                                                                        +
+           "Actual Rows": 1,                                                                                                                                        +
+           "Actual Loops": 1,                                                                                                                                       +
+           "Output": ["(\"substring\"((customer.c_phone)::text, 1, 2))", "count(*)", "sum(customer.c_acctbal)"],                                                    +
+           "Group Key": ["(\"substring\"((customer.c_phone)::text, 1, 2))"],                                                                                        +
+           "Shared Hit Blocks": 622,                                                                                                                                +
+           "Shared Read Blocks": 1645807,                                                                                                                           +
+           "Shared Dirtied Blocks": 0,                                                                                                                              +
+           "Shared Written Blocks": 0,                                                                                                                              +
+           "Local Hit Blocks": 0,                                                                                                                                   +
+           "Local Read Blocks": 0,                                                                                                                                  +
+           "Local Dirtied Blocks": 0,                                                                                                                               +
+           "Local Written Blocks": 0,                                                                                                                               +
+           "Temp Read Blocks": 175537,                                                                                                                              +
+           "Temp Written Blocks": 184222,                                                                                                                           +
+           "Plans": [                                                                                                                                               +
+             {                                                                                                                                                      +
+               "Node Type": "Gather Merge",                                                                                                                         +
+               "Parent Relationship": "Outer",                                                                                                                      +
+               "Parallel Aware": false,                                                                                                                             +
+               "Startup Cost": 5727037.51,                                                                                                                          +
+               "Total Cost": 5736919.38,                                                                                                                            +
+               "Plan Rows": 76500,                                                                                                                                  +
+               "Plan Width": 72,                                                                                                                                    +
+               "Actual Rows": 4,                                                                                                                                    +
+               "Actual Loops": 1,                                                                                                                                   +
+               "Output": ["(\"substring\"((customer.c_phone)::text, 1, 2))", "(PARTIAL count(*))", "(PARTIAL sum(customer.c_acctbal))"],                            +
+               "Workers Planned": 2,                                                                                                                                +
+               "Params Evaluated": ["$1"],                                                                                                                          +
+               "Workers Launched": 2,                                                                                                                               +
+               "Shared Hit Blocks": 1828,                                                                                                                           +
+               "Shared Read Blocks": 4079085,                                                                                                                       +
+               "Shared Dirtied Blocks": 0,                                                                                                                          +
+               "Shared Written Blocks": 0,                                                                                                                          +
+               "Local Hit Blocks": 0,                                                                                                                               +
+               "Local Read Blocks": 0,                                                                                                                              +
+               "Local Dirtied Blocks": 0,                                                                                                                           +
+               "Local Written Blocks": 0,                                                                                                                           +
+               "Temp Read Blocks": 527351,                                                                                                                          +
+               "Temp Written Blocks": 550267,                                                                                                                       +
+               "Plans": [                                                                                                                                           +
+                 {                                                                                                                                                  +
+                   "Node Type": "Aggregate",                                                                                                                        +
+                   "Strategy": "Sorted",                                                                                                                            +
+                   "Partial Mode": "Partial",                                                                                                                       +
+                   "Parent Relationship": "Outer",                                                                                                                  +
+                   "Parallel Aware": false,                                                                                                                         +
+                   "Startup Cost": 5726037.48,                                                                                                                      +
+                   "Total Cost": 5727089.36,                                                                                                                        +
+                   "Plan Rows": 38250,                                                                                                                              +
+                   "Plan Width": 72,                                                                                                                                +
+                   "Actual Rows": 3,                                                                                                                                +
+                   "Actual Loops": 3,                                                                                                                               +
+                   "Output": ["(\"substring\"((customer.c_phone)::text, 1, 2))", "PARTIAL count(*)", "PARTIAL sum(customer.c_acctbal)"],                            +
+                   "Group Key": ["(\"substring\"((customer.c_phone)::text, 1, 2))"],                                                                                +
+                   "Shared Hit Blocks": 1821,                                                                                                                       +
+                   "Shared Read Blocks": 3660880,                                                                                                                   +
+                   "Shared Dirtied Blocks": 0,                                                                                                                      +
+                   "Shared Written Blocks": 0,                                                                                                                      +
+                   "Local Hit Blocks": 0,                                                                                                                           +
+                   "Local Read Blocks": 0,                                                                                                                          +
+                   "Local Dirtied Blocks": 0,                                                                                                                       +
+                   "Local Written Blocks": 0,                                                                                                                       +
+                   "Temp Read Blocks": 527351,                                                                                                                      +
+                   "Temp Written Blocks": 550267,                                                                                                                   +
+                   "Workers": [                                                                                                                                     +
+                     {                                                                                                                                              +
+                       "Worker Number": 0,                                                                                                                          +
+                       "Actual Rows": 3,                                                                                                                            +
+                       "Actual Loops": 1,                                                                                                                           +
+                       "Shared Hit Blocks": 583,                                                                                                                    +
+                       "Shared Read Blocks": 1216880,                                                                                                               +
+                       "Shared Dirtied Blocks": 0,                                                                                                                  +
+                       "Shared Written Blocks": 0,                                                                                                                  +
+                       "Local Hit Blocks": 0,                                                                                                                       +
+                       "Local Read Blocks": 0,                                                                                                                      +
+                       "Local Dirtied Blocks": 0,                                                                                                                   +
+                       "Local Written Blocks": 0,                                                                                                                   +
+                       "Temp Read Blocks": 176152,                                                                                                                  +
+                       "Temp Written Blocks": 182940                                                                                                                +
+                     },                                                                                                                                             +
+                     {                                                                                                                                              +
+                       "Worker Number": 1,                                                                                                                          +
+                       "Actual Rows": 4,                                                                                                                            +
+                       "Actual Loops": 1,                                                                                                                           +
+                       "Shared Hit Blocks": 623,                                                                                                                    +
+                       "Shared Read Blocks": 1216398,                                                                                                               +
+                       "Shared Dirtied Blocks": 0,                                                                                                                  +
+                       "Shared Written Blocks": 0,                                                                                                                  +
+                       "Local Hit Blocks": 0,                                                                                                                       +
+                       "Local Read Blocks": 0,                                                                                                                      +
+                       "Local Dirtied Blocks": 0,                                                                                                                   +
+                       "Local Written Blocks": 0,                                                                                                                   +
+                       "Temp Read Blocks": 175662,                                                                                                                  +
+                       "Temp Written Blocks": 183105                                                                                                                +
+                     }                                                                                                                                              +
+                   ],                                                                                                                                               +
+                   "Plans": [                                                                                                                                       +
+                     {                                                                                                                                              +
+                       "Node Type": "Sort",                                                                                                                         +
+                       "Parent Relationship": "Outer",                                                                                                              +
+                       "Parallel Aware": false,                                                                                                                     +
+                       "Startup Cost": 5726037.48,                                                                                                                  +
+                       "Total Cost": 5726133.11,                                                                                                                    +
+                       "Plan Rows": 38250,                                                                                                                          +
+                       "Plan Width": 38,                                                                                                                            +
+                       "Actual Rows": 90831,                                                                                                                        +
+                       "Actual Loops": 3,                                                                                                                           +
+                       "Output": ["(\"substring\"((customer.c_phone)::text, 1, 2))", "customer.c_acctbal"],                                                         +
+                       "Sort Key": ["(\"substring\"((customer.c_phone)::text, 1, 2))"],                                                                             +
+                       "Sort Method": "external merge",                                                                                                             +
+                       "Sort Space Used": 2368,                                                                                                                     +
+                       "Sort Space Type": "Disk",                                                                                                                   +
+                       "Workers": [                                                                                                                                 +
+                         {                                                                                                                                          +
+                           "Worker Number": 0,                                                                                                                      +
+                           "Sort Method": "external merge",                                                                                                         +
+                           "Sort Space Used": 2384,                                                                                                                 +
+                           "Sort Space Type": "Disk"                                                                                                                +
+                         },                                                                                                                                         +
+                         {                                                                                                                                          +
+                           "Worker Number": 1,                                                                                                                      +
+                           "Sort Method": "external merge",                                                                                                         +
+                           "Sort Space Used": 2392,                                                                                                                 +
+                           "Sort Space Type": "Disk"                                                                                                                +
+                         }                                                                                                                                          +
+                       ],                                                                                                                                           +
+                       "Shared Hit Blocks": 1821,                                                                                                                   +
+                       "Shared Read Blocks": 3660880,                                                                                                               +
+                       "Shared Dirtied Blocks": 0,                                                                                                                  +
+                       "Shared Written Blocks": 0,                                                                                                                  +
+                       "Local Hit Blocks": 0,                                                                                                                       +
+                       "Local Read Blocks": 0,                                                                                                                      +
+                       "Local Dirtied Blocks": 0,                                                                                                                   +
+                       "Local Written Blocks": 0,                                                                                                                   +
+                       "Temp Read Blocks": 527351,                                                                                                                  +
+                       "Temp Written Blocks": 550267,                                                                                                               +
+                       "Workers": [                                                                                                                                 +
+                         {                                                                                                                                          +
+                           "Worker Number": 0,                                                                                                                      +
+                           "Actual Rows": 90686,                                                                                                                    +
+                           "Actual Loops": 1,                                                                                                                       +
+                           "Shared Hit Blocks": 583,                                                                                                                +
+                           "Shared Read Blocks": 1216880,                                                                                                           +
+                           "Shared Dirtied Blocks": 0,                                                                                                              +
+                           "Shared Written Blocks": 0,                                                                                                              +
+                           "Local Hit Blocks": 0,                                                                                                                   +
+                           "Local Read Blocks": 0,                                                                                                                  +
+                           "Local Dirtied Blocks": 0,                                                                                                               +
+                           "Local Written Blocks": 0,                                                                                                               +
+                           "Temp Read Blocks": 176152,                                                                                                              +
+                           "Temp Written Blocks": 182940                                                                                                            +
+                         },                                                                                                                                         +
+                         {                                                                                                                                          +
+                           "Worker Number": 1,                                                                                                                      +
+                           "Actual Rows": 121699,                                                                                                                   +
+                           "Actual Loops": 1,                                                                                                                       +
+                           "Shared Hit Blocks": 623,                                                                                                                +
+                           "Shared Read Blocks": 1216398,                                                                                                           +
+                           "Shared Dirtied Blocks": 0,                                                                                                              +
+                           "Shared Written Blocks": 0,                                                                                                              +
+                           "Local Hit Blocks": 0,                                                                                                                   +
+                           "Local Read Blocks": 0,                                                                                                                  +
+                           "Local Dirtied Blocks": 0,                                                                                                               +
+                           "Local Written Blocks": 0,                                                                                                               +
+                           "Temp Read Blocks": 175662,                                                                                                              +
+                           "Temp Written Blocks": 183105                                                                                                            +
+                         }                                                                                                                                          +
+                       ],                                                                                                                                           +
+                       "Plans": [                                                                                                                                   +
+                         {                                                                                                                                          +
+                           "Node Type": "Hash Join",                                                                                                                +
+                           "Parent Relationship": "Outer",                                                                                                          +
+                           "Parallel Aware": true,                                                                                                                  +
+                           "Join Type": "Anti",                                                                                                                     +
+                           "Startup Cost": 4894722.15,                                                                                                              +
+                           "Total Cost": 5723126.05,                                                                                                                +
+                           "Plan Rows": 38250,                                                                                                                      +
+                           "Plan Width": 38,                                                                                                                        +
+                           "Actual Rows": 121082,                                                                                                                   +
+                           "Actual Loops": 3,                                                                                                                       +
+                           "Output": ["\"substring\"((customer.c_phone)::text, 1, 2)", "customer.c_acctbal"],                                                       +
+                           "Inner Unique": false,                                                                                                                   +
+                           "Hash Cond": "(customer.c_custkey = orders.o_custkey)",                                                                                  +
+                           "Shared Hit Blocks": 1767,                                                                                                               +
+                           "Shared Read Blocks": 3660878,                                                                                                           +
+                           "Shared Dirtied Blocks": 0,                                                                                                              +
+                           "Shared Written Blocks": 0,                                                                                                              +
+                           "Local Hit Blocks": 0,                                                                                                                   +
+                           "Local Read Blocks": 0,                                                                                                                  +
+                           "Local Dirtied Blocks": 0,                                                                                                               +
+                           "Local Written Blocks": 0,                                                                                                               +
+                           "Temp Read Blocks": 526458,                                                                                                              +
+                           "Temp Written Blocks": 549368,                                                                                                           +
+                           "Workers": [                                                                                                                             +
+                             {                                                                                                                                      +
+                               "Worker Number": 0,                                                                                                                  +
+                               "Actual Rows": 121149,                                                                                                               +
+                               "Actual Loops": 1,                                                                                                                   +
+                               "Shared Hit Blocks": 555,                                                                                                            +
+                               "Shared Read Blocks": 1216880,                                                                                                       +
+                               "Shared Dirtied Blocks": 0,                                                                                                          +
+                               "Shared Written Blocks": 0,                                                                                                          +
+                               "Local Hit Blocks": 0,                                                                                                               +
+                               "Local Read Blocks": 0,                                                                                                              +
+                               "Local Dirtied Blocks": 0,                                                                                                           +
+                               "Local Written Blocks": 0,                                                                                                           +
+                               "Temp Read Blocks": 175854,                                                                                                          +
+                               "Temp Written Blocks": 182640                                                                                                        +
+                             },                                                                                                                                     +
+                             {                                                                                                                                      +
+                               "Worker Number": 1,                                                                                                                  +
+                               "Actual Rows": 121699,                                                                                                               +
+                               "Actual Loops": 1,                                                                                                                   +
+                               "Shared Hit Blocks": 597,                                                                                                            +
+                               "Shared Read Blocks": 1216396,                                                                                                       +
+                               "Shared Dirtied Blocks": 0,                                                                                                          +
+                               "Shared Written Blocks": 0,                                                                                                          +
+                               "Local Hit Blocks": 0,                                                                                                               +
+                               "Local Read Blocks": 0,                                                                                                              +
+                               "Local Dirtied Blocks": 0,                                                                                                           +
+                               "Local Written Blocks": 0,                                                                                                           +
+                               "Temp Read Blocks": 175363,                                                                                                          +
+                               "Temp Written Blocks": 182804                                                                                                        +
+                             }                                                                                                                                      +
+                           ],                                                                                                                                       +
+                           "Plans": [                                                                                                                               +
+                             {                                                                                                                                      +
+                               "Node Type": "Seq Scan",                                                                                                             +
+                               "Parent Relationship": "Outer",                                                                                                      +
+                               "Parallel Aware": true,                                                                                                              +
+                               "Relation Name": "customer",                                                                                                         +
+                               "Schema": "store",                                                                                                                   +
+                               "Alias": "customer",                                                                                                                 +
+                               "Startup Cost": 0.00,                                                                                                                +
+                               "Total Cost": 582253.14,                                                                                                             +
+                               "Plan Rows": 72910,                                                                                                                  +
+                               "Plan Width": 26,                                                                                                                    +
+                               "Actual Rows": 363442,                                                                                                               +
+                               "Actual Loops": 3,                                                                                                                   +
+                               "Output": ["customer.c_phone", "customer.c_acctbal", "customer.c_custkey"],                                                          +
+                               "Filter": "((customer.c_acctbal > $1) AND (\"substring\"((customer.c_phone)::text, 1, 2) = ANY ('{28,43,22,39,31,30,41}'::text[])))",+
+                               "Rows Removed by Filter": 4636558,                                                                                                   +
+                               "Shared Hit Blocks": 0,                                                                                                              +
+                               "Shared Read Blocks": 418206,                                                                                                        +
+                               "Shared Dirtied Blocks": 0,                                                                                                          +
+                               "Shared Written Blocks": 0,                                                                                                          +
+                               "Local Hit Blocks": 0,                                                                                                               +
+                               "Local Read Blocks": 0,                                                                                                              +
+                               "Local Dirtied Blocks": 0,                                                                                                           +
+                               "Local Written Blocks": 0,                                                                                                           +
+                               "Temp Read Blocks": 0,                                                                                                               +
+                               "Temp Written Blocks": 0,                                                                                                            +
+                               "Workers": [                                                                                                                         +
+                                 {                                                                                                                                  +
+                                   "Worker Number": 0,                                                                                                              +
+                                   "Actual Rows": 360875,                                                                                                           +
+                                   "Actual Loops": 1,                                                                                                               +
+                                   "Shared Hit Blocks": 0,                                                                                                          +
+                                   "Shared Read Blocks": 138453,                                                                                                    +
+                                   "Shared Dirtied Blocks": 0,                                                                                                      +
+                                   "Shared Written Blocks": 0,                                                                                                      +
+                                   "Local Hit Blocks": 0,                                                                                                           +
+                                   "Local Read Blocks": 0,                                                                                                          +
+                                   "Local Dirtied Blocks": 0,                                                                                                       +
+                                   "Local Written Blocks": 0,                                                                                                       +
+                                   "Temp Read Blocks": 0,                                                                                                           +
+                                   "Temp Written Blocks": 0                                                                                                         +
+                                 },                                                                                                                                 +
+                                 {                                                                                                                                  +
+                                   "Worker Number": 1,                                                                                                              +
+                                   "Actual Rows": 357090,                                                                                                           +
+                                   "Actual Loops": 1,                                                                                                               +
+                                   "Shared Hit Blocks": 0,                                                                                                          +
+                                   "Shared Read Blocks": 137191,                                                                                                    +
+                                   "Shared Dirtied Blocks": 0,                                                                                                      +
+                                   "Shared Written Blocks": 0,                                                                                                      +
+                                   "Local Hit Blocks": 0,                                                                                                           +
+                                   "Local Read Blocks": 0,                                                                                                          +
+                                   "Local Dirtied Blocks": 0,                                                                                                       +
+                                   "Local Written Blocks": 0,                                                                                                       +
+                                   "Temp Read Blocks": 0,                                                                                                           +
+                                   "Temp Written Blocks": 0                                                                                                         +
+                                 }                                                                                                                                  +
+                               ]                                                                                                                                    +
+                             },                                                                                                                                     +
+                             {                                                                                                                                      +
+                               "Node Type": "Hash",                                                                                                                 +
+                               "Parent Relationship": "Inner",                                                                                                      +
+                               "Parallel Aware": true,                                                                                                              +
+                               "Startup Cost": 3869368.40,                                                                                                          +
+                               "Total Cost": 3869368.40,                                                                                                            +
+                               "Plan Rows": 62497740,                                                                                                               +
+                               "Plan Width": 8,                                                                                                                     +
+                               "Actual Rows": 50000000,                                                                                                             +
+                               "Actual Loops": 3,                                                                                                                   +
+                               "Output": ["orders.o_custkey"],                                                                                                      +
+                               "Hash Buckets": 131072,                                                                                                              +
+                               "Original Hash Buckets": 131072,                                                                                                     +
+                               "Hash Batches": 2048,                                                                                                                +
+                               "Original Hash Batches": 2048,                                                                                                       +
+                               "Peak Memory Usage": 4064,                                                                                                           +
+                               "Shared Hit Blocks": 1730,                                                                                                           +
+                               "Shared Read Blocks": 3242661,                                                                                                       +
+                               "Shared Dirtied Blocks": 0,                                                                                                          +
+                               "Shared Written Blocks": 0,                                                                                                          +
+                               "Local Hit Blocks": 0,                                                                                                               +
+                               "Local Read Blocks": 0,                                                                                                              +
+                               "Local Dirtied Blocks": 0,                                                                                                           +
+                               "Local Written Blocks": 0,                                                                                                           +
+                               "Temp Read Blocks": 0,                                                                                                               +
+                               "Temp Written Blocks": 524792,                                                                                                       +
+                               "Workers": [                                                                                                                         +
+                                 {                                                                                                                                  +
+                                   "Worker Number": 0,                                                                                                              +
+                                   "Actual Rows": 49884277,                                                                                                         +
+                                   "Actual Loops": 1,                                                                                                               +
+                                   "Shared Hit Blocks": 538,                                                                                                        +
+                                   "Shared Read Blocks": 1078427,                                                                                                   +
+                                   "Shared Dirtied Blocks": 0,                                                                                                      +
+                                   "Shared Written Blocks": 0,                                                                                                      +
+                                   "Local Hit Blocks": 0,                                                                                                           +
+                                   "Local Read Blocks": 0,                                                                                                          +
+                                   "Local Dirtied Blocks": 0,                                                                                                       +
+                                   "Local Written Blocks": 0,                                                                                                       +
+                                   "Temp Read Blocks": 0,                                                                                                           +
+                                   "Temp Written Blocks": 174448                                                                                                    +
+                                 },                                                                                                                                 +
+                                 {                                                                                                                                  +
+                                   "Worker Number": 1,                                                                                                              +
+                                   "Actual Rows": 49922108,                                                                                                         +
+                                   "Actual Loops": 1,                                                                                                               +
+                                   "Shared Hit Blocks": 580,                                                                                                        +
+                                   "Shared Read Blocks": 1079205,                                                                                                   +
+                                   "Shared Dirtied Blocks": 0,                                                                                                      +
+                                   "Shared Written Blocks": 0,                                                                                                      +
+                                   "Local Hit Blocks": 0,                                                                                                           +
+                                   "Local Read Blocks": 0,                                                                                                          +
+                                   "Local Dirtied Blocks": 0,                                                                                                       +
+                                   "Local Written Blocks": 0,                                                                                                       +
+                                   "Temp Read Blocks": 0,                                                                                                           +
+                                   "Temp Written Blocks": 174612                                                                                                    +
+                                 }                                                                                                                                  +
+                               ],                                                                                                                                   +
+                               "Plans": [                                                                                                                           +
+                                 {                                                                                                                                  +
+                                   "Node Type": "Seq Scan",                                                                                                         +
+                                   "Parent Relationship": "Outer",                                                                                                  +
+                                   "Parallel Aware": true,                                                                                                          +
+                                   "Relation Name": "orders",                                                                                                       +
+                                   "Schema": "store",                                                                                                               +
+                                   "Alias": "orders",                                                                                                               +
+                                   "Startup Cost": 0.00,                                                                                                            +
+                                   "Total Cost": 3869368.40,                                                                                                        +
+                                   "Plan Rows": 62497740,                                                                                                           +
+                                   "Plan Width": 8,                                                                                                                 +
+                                   "Actual Rows": 50000000,                                                                                                         +
+                                   "Actual Loops": 3,                                                                                                               +
+                                   "Output": ["orders.o_custkey"],                                                                                                  +
+                                   "Shared Hit Blocks": 1730,                                                                                                       +
+                                   "Shared Read Blocks": 3242661,                                                                                                   +
+                                   "Shared Dirtied Blocks": 0,                                                                                                      +
+                                   "Shared Written Blocks": 0,                                                                                                      +
+                                   "Local Hit Blocks": 0,                                                                                                           +
+                                   "Local Read Blocks": 0,                                                                                                          +
+                                   "Local Dirtied Blocks": 0,                                                                                                       +
+                                   "Local Written Blocks": 0,                                                                                                       +
+                                   "Temp Read Blocks": 0,                                                                                                           +
+                                   "Temp Written Blocks": 0,                                                                                                        +
+                                   "Workers": [                                                                                                                     +
+                                     {                                                                                                                              +
+                                       "Worker Number": 0,                                                                                                          +
+                                       "Actual Rows": 49884277,                                                                                                     +
+                                       "Actual Loops": 1,                                                                                                           +
+                                       "Shared Hit Blocks": 538,                                                                                                    +
+                                       "Shared Read Blocks": 1078427,                                                                                               +
+                                       "Shared Dirtied Blocks": 0,                                                                                                  +
+                                       "Shared Written Blocks": 0,                                                                                                  +
+                                       "Local Hit Blocks": 0,                                                                                                       +
+                                       "Local Read Blocks": 0,                                                                                                      +
+                                       "Local Dirtied Blocks": 0,                                                                                                   +
+                                       "Local Written Blocks": 0,                                                                                                   +
+                                       "Temp Read Blocks": 0,                                                                                                       +
+                                       "Temp Written Blocks": 0                                                                                                     +
+                                     },                                                                                                                             +
+                                     {                                                                                                                              +
+                                       "Worker Number": 1,                                                                                                          +
+                                       "Actual Rows": 49922108,                                                                                                     +
+                                       "Actual Loops": 1,                                                                                                           +
+                                       "Shared Hit Blocks": 580,                                                                                                    +
+                                       "Shared Read Blocks": 1079205,                                                                                               +
+                                       "Shared Dirtied Blocks": 0,                                                                                                  +
+                                       "Shared Written Blocks": 0,                                                                                                  +
+                                       "Local Hit Blocks": 0,                                                                                                       +
+                                       "Local Read Blocks": 0,                                                                                                      +
+                                       "Local Dirtied Blocks": 0,                                                                                                   +
+                                       "Local Written Blocks": 0,                                                                                                   +
+                                       "Temp Read Blocks": 0,                                                                                                       +
+                                       "Temp Written Blocks": 0                                                                                                     +
+                                     }                                                                                                                              +
+                                   ]                                                                                                                                +
+                                 }                                                                                                                                  +
+                               ]                                                                                                                                    +
+                             }                                                                                                                                      +
+                           ]                                                                                                                                        +
+                         }                                                                                                                                          +
+                       ]                                                                                                                                            +
+                     }                                                                                                                                              +
+                   ]                                                                                                                                                +
+                 }                                                                                                                                                  +
+               ]                                                                                                                                                    +
+             }                                                                                                                                                      +
+           ]                                                                                                                                                        +
+         }                                                                                                                                                          +
+       ]                                                                                                                                                            +
+     },                                                                                                                                                             +
+     "Planning Time": 482.969,                                                                                                                                      +
+     "Triggers": [                                                                                                                                                  +
+     ],                                                                                                                                                             +
+     "Execution Time": 3665165.971                                                                                                                                  +
+   }                                                                                                                                                                +
+ ]
+(1 row)
+
